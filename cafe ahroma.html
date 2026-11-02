@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="km" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aroma Cafe | កាហ្វេ អារម្មណ៍ - Cozy Coffee & Bakery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              coffee: {
+                50: "#fbf8f5",
+                100: "#f5efe8",
+                200: "#e9ddcf",
+                300: "#d7beaa",
+                400: "#c29a80",
+                500: "#ad7c5d",
+                600: "#946146",
+                700: "#7a4d38",
+                800: "#643f30",
+                900: "#432a21",
+                950: "#1d120d",
+              },
+              amberGold: "#d4a373",
+            },
+            fontFamily: {
+              sans: ["Kantumruy Pro", "Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <script>
+      // Check initial theme before page render to avoid flash
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <!-- Google Fonts: Kantumruy Pro & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Kantumruy Pro", sans-serif;
+      }
+      .hero-pattern {
+        background-color: #231510;
+        background-image: radial-gradient(
+          rgba(212, 163, 115, 0.15) 1px,
+          transparent 0
+        );
+        background-size: 24px 24px;
+      }
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .dark .glassmorphism {
+        background: rgba(29, 18, 13, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .glass-dark {
+        background: rgba(29, 18, 13, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-coffee-50 dark:bg-[#150d0a] text-coffee-900 dark:text-coffee-100 antialiased selection:bg-amberGold selection:text-coffee-950 transition-colors duration-300"
+  >
+    <!-- Navigation Bar -->
+    <header
+      class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 glassmorphism border-b border-coffee-200/50 dark:border-coffee-800/60 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+      >
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 rounded-full bg-coffee-800 dark:bg-amberGold text-amberGold dark:text-coffee-950 flex items-center justify-center text-lg shadow-md transition-transform duration-300 group-hover:scale-105"
+          >
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+          <div>
+            <span
+              class="block text-lg font-bold font-serif tracking-wide text-coffee-900 dark:text-white leading-tight"
+              >Aroma Cafe</span
+            >
+            <span
+              class="block text-xs font-medium text-coffee-600 dark:text-coffee-300 tracking-wider"
+              >កាហ្វេ អារម្មណ៍</span
+            >
+          </div>
+        </a>
+
+        <!-- Desktop Nav Menu -->
+        <nav
+          class="hidden md:flex items-center gap-7 text-sm font-medium text-coffee-800 dark:text-coffee-200"
+        >
+          <a
+            href="#home"
+            class="hover:text-amber-700 dark:hover:text-amberGold transition-colors"
+            >ទំព័រដើម</a
+          >
+          <a
+            href="#about"
+            class="hover:text-amber-700 dark:hover:text-amberGold transition-colors"
+            >អំពីយើង</a
+          >
+          <a
+            href="#menu"
+            class="hover:text-amber-700 dark:hover:text-amberGold transition-colors"
+            >ម៉ឺនុយ</a
+          >
+          <a
+            href="#testimonials"
+            class="hover:text-amber-700 dark:hover:text-amberGold transition-colors"
+            >មតិអតិថិជន</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-amber-700 dark:hover:text-amberGold transition-colors"
+            >ទំនាក់ទំនង</a
+          >
+        </nav>
+
+        <!-- Action Buttons + Theme Toggle -->
+        <div class="flex items-center gap-3">
+          <!-- Theme Toggle Button -->
+          <button
+            id="themeToggleBtn"
+            onclick="toggleTheme()"
+            class="w-10 h-10 rounded-full bg-coffee-100 dark:bg-coffee-900 text-coffee-800 dark:text-amberGold border border-coffee-200 dark:border-coffee-700 hover:scale-105 flex items-center justify-center transition-all duration-200 shadow-sm"
+            aria-label="Toggle Theme"
+            title="ផ្លាស់ប្តូរ Dark / Light Mode"
+          >
+            <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+          </button>
+
+          <div class="hidden sm:flex items-center">
+            <button
+              onclick="openBookingModal()"
+              class="px-5 py-2.5 rounded-full bg-coffee-800 hover:bg-coffee-700 dark:bg-amberGold dark:hover:bg-[#c49363] text-white dark:text-coffee-950 font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+            >
+              <i class="fa-regular fa-calendar-check"></i>
+              <span>កក់កន្លែងអង្គុយ</span>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden text-xl text-coffee-800 dark:text-coffee-200 focus:outline-none p-2"
+            aria-label="Toggle Menu"
+          >
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white dark:bg-coffee-950 border-b border-coffee-100 dark:border-coffee-800 px-6 py-5 space-y-3.5 shadow-xl transition-colors"
+      >
+        <a
+          href="#home"
+          class="mobile-link block text-sm font-medium text-coffee-800 dark:text-coffee-200 hover:text-amberGold"
+          >ទំព័រដើម</a
+        >
+        <a
+          href="#about"
+          class="mobile-link block text-sm font-medium text-coffee-800 dark:text-coffee-200 hover:text-amberGold"
+          >អំពីយើង</a
+        >
+        <a
+          href="#menu"
+          class="mobile-link block text-sm font-medium text-coffee-800 dark:text-coffee-200 hover:text-amberGold"
+          >ម៉ឺនុយ</a
+        >
+        <a
+          href="#testimonials"
+          class="mobile-link block text-sm font-medium text-coffee-800 dark:text-coffee-200 hover:text-amberGold"
+          >មតិអតិថិជន</a
+        >
+        <a
+          href="#contact"
+          class="mobile-link block text-sm font-medium text-coffee-800 dark:text-coffee-200 hover:text-amberGold"
+          >ទំនាក់ទំនង</a
+        >
+        <div class="pt-2 border-t border-coffee-100 dark:border-coffee-800">
+          <button
+            onclick="
+              openBookingModal();
+              toggleMobileMenu();
+            "
+            class="w-full py-2.5 rounded-full bg-coffee-800 dark:bg-amberGold text-white dark:text-coffee-950 font-medium text-xs shadow text-center flex items-center justify-center gap-2"
+          >
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>កក់កន្លែងអង្គុយឥឡូវនេះ</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative pt-28 pb-16 md:pt-36 md:pb-28 overflow-hidden hero-pattern"
+    >
+      <div
+        class="absolute top-1/4 -left-20 w-80 h-80 bg-coffee-600/20 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-10 right-0 w-96 h-96 bg-amberGold/15 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Left text content -->
+          <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-amberGold border border-white/15 text-xs backdrop-blur-sm"
+            >
+              <i class="fa-solid fa-sparkles text-[11px]"></i>
+              <span>បទពិសោធន៍កាហ្វេពិសេស និងបរិយាកាសស្ងប់ស្ងាត់</span>
+            </div>
+
+            <!-- Balanced Headings -->
+            <h1
+              class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-snug sm:leading-tight"
+            >
+              អារម្មណ៍ស្រស់ស្រាយជាមួយ <br class="hidden sm:inline" />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-amberGold via-coffee-300 to-amber-200"
+                >រសជាតិកាហ្វេពិតៗ</span
+              >
+            </h1>
+
+            <p
+              class="text-coffee-200 text-xs sm:text-sm md:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal"
+            >
+              សូមស្វាគមន៍មកកាន់ Aroma Cafe (កាហ្វេ អារម្មណ៍)!
+              យើងជ្រើសរើសគ្រាប់កាហ្វេល្អប្រណិត ដុតស្រស់ៗរាល់ថ្ងៃ
+              ដើម្បីជូននូវរសជាតិដ៏ឈ្ងុយឆ្ងាញ់ អមដោយនំដុតថ្មីៗ
+              និងបរិយាកាសកក់ក្តៅសក្តិសមសម្រាប់ការសម្រាក និងការងារ។
+            </p>
+
+            <!-- CTAs -->
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1"
+            >
+              <a
+                href="#menu"
+                class="w-full sm:w-auto px-7 py-3 rounded-full bg-amberGold hover:bg-[#c69363] text-coffee-950 font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>ទស្សនាម៉ឺនុយ</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+              <button
+                onclick="openBookingModal()"
+                class="w-full sm:w-auto px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium text-xs sm:text-sm transition-all duration-200 text-center flex items-center justify-center gap-2 backdrop-blur-sm"
+              >
+                <i class="fa-regular fa-clock"></i>
+                <span>កក់តុទុកជាមុន</span>
+              </button>
+            </div>
+
+            <!-- Highlight Metrics -->
+            <div
+              class="grid grid-cols-3 gap-4 pt-5 border-t border-white/10 text-white max-w-md mx-auto lg:mx-0"
+            >
+              <div>
+                <div
+                  class="text-xl sm:text-2xl font-bold font-serif text-amberGold"
+                >
+                  100%
+                </div>
+                <div class="text-[11px] sm:text-xs text-coffee-300">
+                  Organic Coffee
+                </div>
+              </div>
+              <div>
+                <div
+                  class="text-xl sm:text-2xl font-bold font-serif text-amberGold"
+                >
+                  25+
+                </div>
+                <div class="text-[11px] sm:text-xs text-coffee-300">
+                  ភេសជ្ជៈ & នំ
+                </div>
+              </div>
+              <div>
+                <div
+                  class="text-xl sm:text-2xl font-bold font-serif text-amberGold"
+                >
+                  4.9 ★
+                </div>
+                <div class="text-[11px] sm:text-xs text-coffee-300">
+                  ការពេញចិត្តខ្ពស់
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Visual Element -->
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div
+              class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80"
+                alt="Aroma Cafe Interior"
+                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-coffee-950/85 via-transparent to-transparent"
+              ></div>
+              <div
+                class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl glass-dark border border-white/15 text-white"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-bold text-xs sm:text-sm">
+                      Special House Blend
+                    </h4>
+                    <p class="text-[11px] text-coffee-200">
+                      រសជាតិឈ្ងុយពិសេស ប្រចាំហាង
+                    </p>
+                  </div>
+                  <span class="text-amberGold font-bold text-sm">$3.50</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section
+      id="about"
+      class="py-16 md:py-20 bg-white dark:bg-[#1a110d] transition-colors"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <!-- Images Collage -->
+          <div class="relative grid grid-cols-2 gap-3.5">
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"
+              alt="Coffee Brewing"
+              class="w-full h-56 sm:h-72 object-cover rounded-2xl shadow-md transform -translate-y-2"
+              loading="lazy"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+              alt="Bakery & Pastries"
+              class="w-full h-56 sm:h-72 object-cover rounded-2xl shadow-md transform translate-y-5"
+              loading="lazy"
+            />
+            <div
+              class="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-coffee-800 dark:bg-coffee-900 text-white px-5 py-2.5 rounded-2xl shadow-xl border border-amberGold text-center whitespace-nowrap"
+            >
+              <span class="text-xs font-semibold text-amberGold block"
+                >បើកបម្រើជូនជារៀងរាល់ថ្ងៃ</span
+              >
+              <span class="text-[11px] text-coffee-100"
+                >7:00 ព្រឹក - 8:30 យប់</span
+              >
+            </div>
+          </div>
+
+          <!-- Text Content -->
+          <div class="space-y-4">
+            <span
+              class="text-coffee-600 dark:text-amberGold font-semibold tracking-wider text-xs uppercase"
+              >រឿងរ៉ាវរបស់យើង</span
+            >
+            <h2
+              class="text-2xl sm:text-3xl font-serif font-bold text-coffee-950 dark:text-white leading-snug"
+            >
+              បង្កើតឡើងដោយទឹកចិត្តស្រឡាញ់ និងការយកចិត្តទុកដាក់
+            </h2>
+            <p
+              class="text-gray-600 dark:text-coffee-200 text-xs sm:text-sm leading-relaxed"
+            >
+              នៅ
+              <span class="font-semibold text-coffee-800 dark:text-amberGold"
+                >Aroma Cafe (កាហ្វេ អារម្មណ៍)</span
+              >
+              យើងជឿជាក់ថាកាហ្វេមួយពែងមិនត្រឹមតែជាភេសជ្ជៈនោះទេ
+              ប៉ុន្តែជាឱកាសដើម្បីជួបជុំ សញ្ជឹងគិត និងបង្កើតគំនិតថ្មីៗ។
+              យើងបានជ្រើសរើសគ្រាប់កាហ្វេល្អៗទាំងក្នុងស្រុក និងនាំចូលពីប្រភពល្បីៗ
+              ដើម្បីចម្រាញ់ជាកាហ្វេដែលមានក្លិនឈ្ងុយ និងរសជាតិដិតជាប់មាត់។
+            </p>
+            <div class="space-y-2.5 pt-2">
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 rounded-full bg-coffee-100 dark:bg-coffee-800 text-coffee-700 dark:text-amberGold flex items-center justify-center shrink-0 mt-0.5 text-[10px]"
+                >
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <span
+                  class="text-gray-700 dark:text-coffee-300 text-xs sm:text-sm"
+                  >គ្រាប់កាហ្វេដុតស្រស់ៗដោយ Barista ជំនាញ</span
+                >
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 rounded-full bg-coffee-100 dark:bg-coffee-800 text-coffee-700 dark:text-amberGold flex items-center justify-center shrink-0 mt-0.5 text-[10px]"
+                >
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <span
+                  class="text-gray-700 dark:text-coffee-300 text-xs sm:text-sm"
+                  >នំប៉័ង និងនំ Croissant ធ្វើថ្មីៗជារៀងរាល់ព្រឹក</span
+                >
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-5 h-5 rounded-full bg-coffee-100 dark:bg-coffee-800 text-coffee-700 dark:text-amberGold flex items-center justify-center shrink-0 mt-0.5 text-[10px]"
+                >
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <span
+                  class="text-gray-700 dark:text-coffee-300 text-xs sm:text-sm"
+                  >បរិយាកាសស្ងប់ស្ងាត់ មាន Wi-Fi ល្បឿនលឿន និងកន្លែងសាកថ្ម</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section
+      id="menu"
+      class="py-16 md:py-20 bg-coffee-50 dark:bg-[#150d0a] transition-colors"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span
+            class="text-coffee-600 dark:text-amberGold font-semibold tracking-wider text-xs uppercase"
+            >ម៉ឺនុយប្រចាំហាង</span
+          >
+          <h2
+            class="text-2xl sm:text-3xl font-serif font-bold text-coffee-950 dark:text-white mt-1 leading-snug"
+          >
+            រសជាតិឆ្ងាញ់ជាប់ចិត្តដែលអ្នកមិនគួររំលង
+          </h2>
+          <p class="text-gray-600 dark:text-coffee-300 mt-2 text-xs sm:text-sm">
+            សូមជ្រើសរើសភេសជ្ជៈ និងនំដែលអ្នកចូលចិត្ត
+            ផលិតឡើងពីគ្រឿងផ្សំគុណភាពខ្ពស់បំផុត។
+          </p>
+
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+            <button
+              onclick="filterMenu('all')"
+              class="filter-btn active px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-coffee-800 dark:bg-amberGold text-white dark:text-coffee-950 shadow-sm"
+              data-category="all"
+            >
+              ទាំងអស់
+            </button>
+            <button
+              onclick="filterMenu('coffee')"
+              class="filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-white dark:bg-coffee-900 text-coffee-800 dark:text-coffee-200 hover:bg-coffee-100 dark:hover:bg-coffee-800 border border-coffee-200 dark:border-coffee-700"
+              data-category="coffee"
+            >
+              <i class="fa-solid fa-mug-hot mr-1"></i> កាហ្វេ (Coffee)
+            </button>
+            <button
+              onclick="filterMenu('tea')"
+              class="filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-white dark:bg-coffee-900 text-coffee-800 dark:text-coffee-200 hover:bg-coffee-100 dark:hover:bg-coffee-800 border border-coffee-200 dark:border-coffee-700"
+              data-category="tea"
+            >
+              <i class="fa-solid fa-leaf mr-1"></i> តែ & ភេសជ្ជៈត្រជាក់
+            </button>
+            <button
+              onclick="filterMenu('pastry')"
+              class="filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-white dark:bg-coffee-900 text-coffee-800 dark:text-coffee-200 hover:bg-coffee-100 dark:hover:bg-coffee-800 border border-coffee-200 dark:border-coffee-700"
+              data-category="pastry"
+            >
+              <i class="fa-solid fa-cookie-bite mr-1"></i> នំដុត (Pastries)
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu Grid -->
+        <div
+          id="menuContainer"
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <!-- Items injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section
+      id="testimonials"
+      class="py-16 md:py-20 bg-white dark:bg-[#1a110d] transition-colors"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-lg mx-auto mb-10">
+          <span
+            class="text-coffee-600 dark:text-amberGold font-semibold tracking-wider text-xs uppercase"
+            >ការវាយតម្លៃ</span
+          >
+          <h2
+            class="text-2xl sm:text-3xl font-serif font-bold text-coffee-950 dark:text-white mt-1 leading-snug"
+          >
+            អ្វីដែលអតិថិជនបាននិយាយពីយើង
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Review Card 1 -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-coffee-50 dark:bg-coffee-900/40 border border-coffee-200/60 dark:border-coffee-800 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex text-amber-500 mb-3 text-xs gap-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p
+                class="text-gray-700 dark:text-coffee-200 text-xs sm:text-sm leading-relaxed mb-5 italic"
+              >
+                "Aroma Latte ឆ្ងាញ់ខ្លាំង! ក្លិនឈ្ងុយជាប់មាត់
+                ហើយកន្លែងមានភ្លើងស្រទន់ ស្ងប់ស្ងាត់ល្អខ្លាំងសម្រាប់អង្គុយធ្វើការ
+                ឬអានសៀវភៅ។ បុគ្គលិករួសរាយណាស់។"
+              </p>
+            </div>
+            <div
+              class="flex items-center gap-3 border-t border-coffee-200/50 dark:border-coffee-800/80 pt-3.5"
+            >
+              <div
+                class="w-9 h-9 rounded-full bg-coffee-300 dark:bg-coffee-700 text-coffee-900 dark:text-coffee-100 font-bold flex items-center justify-center text-xs"
+              >
+                ស.វ
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-coffee-900 dark:text-white text-xs sm:text-sm"
+                >
+                  សុខ វាសនា
+                </h4>
+                <p class="text-[11px] text-gray-500 dark:text-coffee-400">
+                  អ្នករចនា Graphic Designer
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-coffee-50 dark:bg-coffee-900/40 border border-coffee-200/60 dark:border-coffee-800 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex text-amber-500 mb-3 text-xs gap-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p
+                class="text-gray-700 dark:text-coffee-200 text-xs sm:text-sm leading-relaxed mb-5 italic"
+              >
+                "Croissant ប៊ឺរស្រួយឆ្ងាញ់ខ្លាំង ញ៉ាំជាមួយ Cold Brew
+                គឺត្រូវគ្នាល្អឥតខ្ចោះ។
+                ខ្ញុំមកទីនេះស្ទើរតែរាល់ចុងសប្តាហ៍ជាមួយមិត្តភក្តិ។ Recommend
+                10/10!"
+              </p>
+            </div>
+            <div
+              class="flex items-center gap-3 border-t border-coffee-200/50 dark:border-coffee-800/80 pt-3.5"
+            >
+              <div
+                class="w-9 h-9 rounded-full bg-coffee-400 dark:bg-coffee-600 text-white font-bold flex items-center justify-center text-xs"
+              >
+                ច.រ
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-coffee-900 dark:text-white text-xs sm:text-sm"
+                >
+                  ចាន់ រស្មី
+                </h4>
+                <p class="text-[11px] text-gray-500 dark:text-coffee-400">
+                  អតិថិជនប្រចាំ
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Card 3 -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-coffee-50 dark:bg-coffee-900/40 border border-coffee-200/60 dark:border-coffee-800 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex text-amber-500 mb-3 text-xs gap-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <p
+                class="text-gray-700 dark:text-coffee-200 text-xs sm:text-sm leading-relaxed mb-5 italic"
+              >
+                "Matcha Latte គុណភាពជប៉ុនពិតៗ មិនផ្អែមខ្លាំងពេកទេ។
+                សេវាកម្មរហ័សទាន់ចិត្ត និងមានកន្លែងចតយានយន្តស្រួលទៀតផង។"
+              </p>
+            </div>
+            <div
+              class="flex items-center gap-3 border-t border-coffee-200/50 dark:border-coffee-800/80 pt-3.5"
+            >
+              <div
+                class="w-9 h-9 rounded-full bg-coffee-500 dark:bg-coffee-700 text-white font-bold flex items-center justify-center text-xs"
+              >
+                ម.ប
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-coffee-900 dark:text-white text-xs sm:text-sm"
+                >
+                  ម៉ៅ បញ្ញា
+                </h4>
+                <p class="text-[11px] text-gray-500 dark:text-coffee-400">
+                  សហគ្រិន
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation Modal -->
+    <div
+      id="bookingModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white dark:bg-coffee-900 rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative transform scale-95 transition-transform duration-300 border border-coffee-100 dark:border-coffee-800"
+      >
+        <!-- Close button -->
+        <button
+          onclick="closeBookingModal()"
+          class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 dark:hover:text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 dark:hover:bg-coffee-800 transition-colors"
+        >
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+
+        <div class="text-center mb-5">
+          <div
+            class="w-11 h-11 bg-coffee-100 dark:bg-coffee-800 text-coffee-800 dark:text-amberGold rounded-full flex items-center justify-center mx-auto mb-2.5 text-lg"
+          >
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <h3
+            class="text-xl sm:text-2xl font-serif font-bold text-coffee-950 dark:text-white"
+          >
+            កក់តុទុកជាមុន
+          </h3>
+          <p class="text-gray-500 dark:text-coffee-300 text-xs mt-1">
+            បំពេញព័ត៌មានខាងក្រោមដើម្បីកក់តុនៅ Aroma Cafe
+          </p>
+        </div>
+
+        <form
+          id="reservationForm"
+          onsubmit="handleReservation(event)"
+          class="space-y-3.5"
+        >
+          <div>
+            <label
+              class="block text-xs font-semibold text-gray-700 dark:text-coffee-200 mb-1"
+              >ឈ្មោះរបស់អ្នក</label
+            >
+            <input
+              type="text"
+              id="custName"
+              required
+              placeholder="ឧ. សុខា"
+              class="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-coffee-700 bg-white dark:bg-coffee-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amberGold text-xs sm:text-sm"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-semibold text-gray-700 dark:text-coffee-200 mb-1"
+              >លេខទូរស័ព្ទ</label
+            >
+            <input
+              type="tel"
+              id="custPhone"
+              required
+              placeholder="ឧ. 012 345 678"
+              class="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-coffee-700 bg-white dark:bg-coffee-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amberGold text-xs sm:text-sm"
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label
+                class="block text-xs font-semibold text-gray-700 dark:text-coffee-200 mb-1"
+                >កាលបរិច្ឆេទ</label
+              >
+              <input
+                type="date"
+                id="custDate"
+                required
+                class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-coffee-700 bg-white dark:bg-coffee-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amberGold text-xs sm:text-sm"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-xs font-semibold text-gray-700 dark:text-coffee-200 mb-1"
+                >ពេលវេលា</label
+              >
+              <input
+                type="time"
+                id="custTime"
+                required
+                class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-coffee-700 bg-white dark:bg-coffee-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amberGold text-xs sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-semibold text-gray-700 dark:text-coffee-200 mb-1"
+              >ចំនួនភ្ញៀវ</label
+            >
+            <select
+              id="custGuests"
+              class="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-coffee-700 bg-white dark:bg-coffee-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amberGold text-xs sm:text-sm"
+            >
+              <option value="1-2">១ - ២ នាក់</option>
+              <option value="3-4">៣ - ៤ នាក់</option>
+              <option value="5+">៥ នាក់ឡើងទៅ (ក្រុម)</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-2.5 rounded-xl bg-coffee-800 hover:bg-coffee-700 dark:bg-amberGold dark:hover:bg-[#c49363] text-white dark:text-coffee-950 font-medium text-xs sm:text-sm transition-all shadow-md mt-2 flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+            <span>បញ្ជាក់ការកក់</span>
+          </button>
+        </form>
+
+        <div id="reservationSuccess" class="hidden text-center py-5">
+          <div
+            class="w-12 h-12 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-3 text-xl"
+          >
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+            ការកក់ទទួលបានជោគជ័យ!
+          </h4>
+          <p
+            class="text-gray-600 dark:text-coffee-200 text-xs mt-1.5 leading-relaxed"
+            id="successMsg"
+          >
+            យើងបានទទួលព័ត៌មានរបស់អ្នកហើយ។ យើងនឹងទាក់ទងបញ្ជាក់ជូនឆាប់ៗនេះ។
+          </p>
+          <button
+            onclick="closeBookingModal()"
+            class="mt-5 px-5 py-2 rounded-full bg-coffee-800 dark:bg-amberGold text-white dark:text-coffee-950 text-xs font-medium"
+          >
+            បិទផ្ទាំងនេះ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact & Footer Section -->
+    <footer
+      id="contact"
+      class="bg-coffee-950 text-coffee-200 pt-16 pb-10 border-t border-coffee-900"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-coffee-800/80"
+        >
+          <!-- Col 1: Brand Info -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-9 h-9 rounded-full bg-amberGold text-coffee-950 flex items-center justify-center text-base font-bold"
+              >
+                <i class="fa-solid fa-mug-hot"></i>
+              </div>
+              <span class="text-xl font-serif font-bold text-white"
+                >Aroma Cafe</span
+              >
+            </div>
+            <p class="text-coffee-300 text-xs leading-relaxed">
+              កន្លែងសម្រាកលំហែកាយជាមួយកាហ្វេដែលមានក្លិនឈ្ងុយ
+              និងរសជាតិដិតជាប់ចិត្ត។
+            </p>
+            <div class="flex gap-2.5 pt-1">
+              <a
+                href="https://www.facebook.com/share/1DosUgNiWS/"
+                class="w-8 h-8 rounded-full bg-coffee-900 hover:bg-amberGold hover:text-coffee-950 flex items-center justify-center text-xs transition-colors"
+                aria-label="Facebook"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 rounded-full bg-coffee-900 hover:bg-amberGold hover:text-coffee-950 flex items-center justify-center text-xs transition-colors"
+                aria-label="Instagram"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="http://t.me/Leang68"
+                class="w-8 h-8 rounded-full bg-coffee-900 hover:bg-amberGold hover:text-coffee-950 flex items-center justify-center text-xs transition-colors"
+                aria-label="Telegram"
+              >
+                <i class="fa-brands fa-telegram"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 2: Quick Links -->
+          <div>
+            <h4
+              class="text-white font-semibold mb-3 text-xs sm:text-sm tracking-wide"
+            >
+              តំណភ្ជាប់រហ័ស
+            </h4>
+            <ul class="space-y-2 text-xs text-coffee-300">
+              <li>
+                <a href="#home" class="hover:text-amberGold transition-colors"
+                  >ទំព័រដើម</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="hover:text-amberGold transition-colors"
+                  >អំពីយើង</a
+                >
+              </li>
+              <li>
+                <a href="#menu" class="hover:text-amberGold transition-colors"
+                  >ម៉ឺនុយប្រចាំហាង</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="hover:text-amberGold transition-colors"
+                  >ការវាយតម្លៃ</a
+                >
+              </li>
+              <li>
+                <button
+                  onclick="openBookingModal()"
+                  class="hover:text-amberGold transition-colors text-left"
+                >
+                  កក់តុទុកជាមុន
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Hours -->
+          <div>
+            <h4
+              class="text-white font-semibold mb-3 text-xs sm:text-sm tracking-wide"
+            >
+              ម៉ោងបើកបម្រើ
+            </h4>
+            <ul class="space-y-2 text-xs text-coffee-300">
+              <li class="flex justify-between">
+                <span>ច័ន្ទ - សុក្រ:</span>
+                <span class="text-white">7:00 ព្រឹក - 8:30 យប់</span>
+              </li>
+              <li class="flex justify-between">
+                <span>សៅរ៍ - អាទិត្យ:</span>
+                <span class="text-white">7:00 ព្រឹក - 9:30 យប់</span>
+              </li>
+              <li class="pt-1 text-[11px] text-amberGold">
+                * បើកទ្វារបម្រើជូនរាល់ថ្ងៃបុណ្យជាតិ
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Location & Contact -->
+          <div>
+            <h4
+              class="text-white font-semibold mb-3 text-xs sm:text-sm tracking-wide"
+            >
+              អាសយដ្ឋាន & ទំនាក់ទំនង
+            </h4>
+            <ul class="space-y-2.5 text-xs text-coffee-300">
+              <li class="flex items-start gap-2.5">
+                <i
+                  class="fa-solid fa-location-dot mt-0.5 text-amberGold text-xs"
+                ></i>
+                <span class="leading-relaxed"
+                  >ផ្ទះលេខ 45, វិថី ព្រះមុនីវង្ស, សង្កាត់បឹងកេងកង, ភ្នំពេញ</span
+                >
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-phone text-amberGold text-xs"></i>
+                <span>+855 (0) 67 720 151</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i class="fa-solid fa-envelope text-amberGold text-xs"></i>
+                <span>contact@aromacafe.kh</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+          class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-coffee-400 gap-3"
+        >
+          <p>&copy; 2026 Aroma Cafe (កាហ្វេ អារម្មណ៍). រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+          <p class="flex items-center gap-1">
+            បង្កើតឡើងដោយទឹកចិត្តស្រឡាញ់កាហ្វេ
+            <i class="fa-solid fa-heart text-red-500 text-[10px]"></i>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript for Menu, Theme & Interactivity -->
+    <script>
+      // Theme Toggle Functionality
+      function updateThemeIcon() {
+        const isDark = document.documentElement.classList.contains("dark");
+        const themeIcon = document.getElementById("themeIcon");
+        if (themeIcon) {
+          if (isDark) {
+            themeIcon.className = "fa-solid fa-sun text-sm text-amber-400";
+          } else {
+            themeIcon.className = "fa-solid fa-moon text-sm text-coffee-800";
+          }
+        }
+      }
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        if (html.classList.contains("dark")) {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+        updateThemeIcon();
+        // Re-render menu to ensure styles adapt if needed
+        const activeBtn = document.querySelector(".filter-btn.active");
+        const category = activeBtn
+          ? activeBtn.getAttribute("data-category")
+          : "all";
+        filterMenu(category);
+      }
+
+      // Menu Items Data
+      const menuItems = [
+        {
+          id: 1,
+          name: "Aroma Signature Latte",
+          category: "coffee",
+          price: "$3.50",
+          description:
+            "កាហ្វេ Espresso ជាមួយទឹកដោះគោស្រស់ រសជាតិឈ្ងុយស្រទន់ និងពពុះទឹកដោះគោមត់រលោង។",
+          image:
+            "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80",
+          tag: "ពេញនិយម",
+        },
+        {
+          id: 2,
+          name: "Classic Americano",
+          category: "coffee",
+          price: "$2.75",
+          description:
+            "Espresso ពីរតំណក់លាយជាមួយទឹកក្តៅ ផ្តល់នូវរសជាតិកាហ្វេដិតបែបបុរាណ។",
+          image:
+            "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+          tag: "Classic",
+        },
+        {
+          id: 3,
+          name: "Spanish Cold Brew",
+          category: "coffee",
+          price: "$3.80",
+          description:
+            "កាហ្វេត្រជាក់ត្រាំរយៈពេល 16 ម៉ោង លាយទឹកដោះគោខាប់ផ្អែមល្មម ត្រជាក់ស្រស់ស្រាយ។",
+          image:
+            "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
+          tag: "ថ្មី",
+        },
+        {
+          id: 4,
+          name: "Kyoto Matcha Green Tea",
+          category: "tea",
+          price: "$3.75",
+          description:
+            "ម្សៅម៉ាត់ឆាគុណភាពពិសេសនាំចូលពីជប៉ុន លាយជាមួយទឹកដោះគោស្រស់។",
+          image:
+            "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80",
+          tag: "លក់ដាច់",
+        },
+        {
+          id: 5,
+          name: "Passion Fruit Honey Tea",
+          category: "tea",
+          price: "$3.00",
+          description:
+            "តែក្រូចឆ្មារផ្លែផាសិនធម្មជាតិ ផ្អែមដោយទឹកឃ្មុំព្រៃ ជួយបំបាត់ការស្រេកទឹក។",
+          image:
+            "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+          tag: "Refreshing",
+        },
+        {
+          id: 6,
+          name: "Golden Butter Croissant",
+          category: "pastry",
+          price: "$2.50",
+          description:
+            "នំ Croissant ស្រួយក្រៅ ទន់ខាងក្នុង ធ្វើពីប៊ឺរបារាំងសុទ្ធ ដុតថ្មីរាល់ព្រឹក។",
+          image:
+            "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
+          tag: "Fresh Baked",
+        },
+        {
+          id: 7,
+          name: "Chocolate Fudge Brownie",
+          category: "pastry",
+          price: "$2.80",
+          description:
+            "ប្រោននីសូកូឡាខ្មៅដិត ផ្អែមតិច និងទន់ស្អិតឆ្ងាញ់ជាមួយសណ្តែក Walnut។",
+          image:
+            "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+          tag: "Dessert",
+        },
+        {
+          id: 8,
+          name: "Caramel Macchiato",
+          category: "coffee",
+          price: "$3.90",
+          description:
+            "ទឹកដោះគោក្តៅស្រោបដោយ Espresso និងរោយពីលើដោយទឹកស៊ីរ៉ូខារ៉ាមែលក្រអូប។",
+          image:
+            "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80",
+          tag: "Sweet",
+        },
+        {
+          id: 9,
+          name: "Blueberry Cheesecake",
+          category: "pastry",
+          price: "$3.50",
+          description:
+            "ឈីសខេកបែបញូវយ៉ក ទន់រលោង បន្ថែមដោយទឹកប៊្លូបឺរីស្រស់ពីលើ។",
+          image:
+            "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80",
+          tag: "Favorite",
+        },
+      ];
+
+      // Render Menu Items
+      function renderMenu(items) {
+        const container = document.getElementById("menuContainer");
+        if (!container) return;
+        container.innerHTML = "";
+
+        items.forEach((item) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-white dark:bg-[#1f1510] rounded-2xl overflow-hidden border border-coffee-100 dark:border-coffee-800/80 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group";
+          card.innerHTML = `
+                    <div class="relative h-44 overflow-hidden bg-coffee-100 dark:bg-coffee-900">
+                        <img 
+                            src="${item.image}" 
+                            alt="${item.name}" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                        >
+                        <span class="absolute top-2.5 right-2.5 bg-coffee-950/80 backdrop-blur-md text-amberGold text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-white/20">
+                            ${item.tag}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                <h3 class="font-bold text-coffee-900 dark:text-white text-sm sm:text-base group-hover:text-amber-700 dark:group-hover:text-amberGold transition-colors">${item.name}</h3>
+                                <span class="font-serif font-bold text-amber-700 dark:text-amberGold text-sm sm:text-base">${item.price}</span>
+                            </div>
+                            <p class="text-gray-500 dark:text-coffee-300 text-xs leading-relaxed line-clamp-2">${item.description}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-coffee-100 dark:border-coffee-800 flex items-center justify-between">
+                            <span class="text-[11px] text-coffee-400 dark:text-coffee-400 capitalize">ប្រភេទ: ${item.category}</span>
+                            <button onclick="openBookingModal()" class="text-xs font-medium text-coffee-700 dark:text-amberGold hover:underline flex items-center gap-1">
+                                <span>កក់តុឥឡូវ</span>
+                                <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      // Filter Functionality
+      function filterMenu(category) {
+        const buttons = document.querySelectorAll(".filter-btn");
+        buttons.forEach((btn) => {
+          if (btn.getAttribute("data-category") === category) {
+            btn.className =
+              "filter-btn active px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-coffee-800 dark:bg-amberGold text-white dark:text-coffee-950 shadow-sm";
+          } else {
+            btn.className =
+              "filter-btn px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 bg-white dark:bg-coffee-900 text-coffee-800 dark:text-coffee-200 hover:bg-coffee-100 dark:hover:bg-coffee-800 border border-coffee-200 dark:border-coffee-700";
+          }
+        });
+
+        if (category === "all") {
+          renderMenu(menuItems);
+        } else {
+          const filtered = menuItems.filter(
+            (item) => item.category === category,
+          );
+          renderMenu(filtered);
+        }
+      }
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.getElementById("menuIcon");
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle("hidden");
+        if (mobileMenu.classList.contains("hidden")) {
+          menuIcon.classList.replace("fa-xmark", "fa-bars");
+        } else {
+          menuIcon.classList.replace("fa-bars", "fa-xmark");
+        }
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+      }
+
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (!mobileMenu.classList.contains("hidden")) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // Booking Modal Controls
+      const bookingModal = document.getElementById("bookingModal");
+      const modalContent = bookingModal
+        ? bookingModal.querySelector("div")
+        : null;
+      const reservationForm = document.getElementById("reservationForm");
+      const reservationSuccess = document.getElementById("reservationSuccess");
+
+      function openBookingModal() {
+        if (!bookingModal) return;
+        bookingModal.classList.remove("hidden");
+        setTimeout(() => {
+          bookingModal.classList.remove("opacity-0");
+          if (modalContent) {
+            modalContent.classList.remove("scale-95");
+            modalContent.classList.add("scale-100");
+          }
+        }, 10);
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeBookingModal() {
+        if (!bookingModal) return;
+        bookingModal.classList.add("opacity-0");
+        if (modalContent) {
+          modalContent.classList.remove("scale-100");
+          modalContent.classList.add("scale-95");
+        }
+        setTimeout(() => {
+          bookingModal.classList.add("hidden");
+          document.body.style.overflow = "";
+          if (reservationForm) {
+            reservationForm.reset();
+            reservationForm.classList.remove("hidden");
+          }
+          if (reservationSuccess) {
+            reservationSuccess.classList.add("hidden");
+          }
+        }, 300);
+      }
+
+      if (bookingModal) {
+        bookingModal.addEventListener("click", (e) => {
+          if (e.target === bookingModal) {
+            closeBookingModal();
+          }
+        });
+      }
+
+      // Handle Reservation Form
+      function handleReservation(event) {
+        event.preventDefault();
+        const name = document.getElementById("custName").value;
+        const date = document.getElementById("custDate").value;
+        const time = document.getElementById("custTime").value;
+
+        const msgEl = document.getElementById("successMsg");
+        if (msgEl) {
+          msgEl.textContent = `អរគុណ ${name}! យើងខ្ញុំបានកត់ត្រាការកក់តុរបស់អ្នកនៅថ្ងៃ ${date} វេលាម៉ោង ${time} រួចរាល់ហើយ។`;
+        }
+
+        if (reservationForm) reservationForm.classList.add("hidden");
+        if (reservationSuccess) reservationSuccess.classList.remove("hidden");
+      }
+
+      // Initialize on load
+      window.addEventListener("DOMContentLoaded", () => {
+        renderMenu(menuItems);
+        updateThemeIcon();
+
+        // Set default date for reservation form to today
+        const today = new Date().toISOString().split("T")[0];
+        const dateInput = document.getElementById("custDate");
+        if (dateInput) {
+          dateInput.min = today;
+          dateInput.value = today;
+        }
+      });
+    </script>
+  </body>
+</html>
